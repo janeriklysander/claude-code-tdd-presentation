@@ -62,7 +62,7 @@
         font-weight: 500;
         border: 1px solid rgba(139, 92, 246, 0.3);
       }
-      
+
       /* Mobile responsiveness */
       @media (max-width: 768px) {
         .slide {
@@ -71,83 +71,131 @@
           min-height: 100vh; /* Ensure minimum height */
           height: auto; /* Allow height to grow if content is too long */
         }
-        
+
         /* Better scroll handling on mobile */
         .scroll-container {
           -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
         }
-        
+
         /* Special handling for workflow slide on mobile */
         #workflow-before .slide {
           height: auto;
           min-height: 100vh;
         }
-        
+
         /* For the good/bad slide on mobile - allow scrolling within slide */
         #good-bad {
           height: 100vh;
           overflow-y: auto;
         }
-        
+
         /* Smaller text sizes on mobile */
-        .text-7xl { font-size: 2.5rem !important; }
-        .text-6xl { font-size: 2.25rem !important; }
-        .text-5xl { font-size: 2rem !important; }
-        .text-4xl { font-size: 1.75rem !important; }
-        .text-3xl { font-size: 1.5rem !important; }
-        .text-2xl { font-size: 1.25rem !important; }
-        .text-xl { font-size: 1.125rem !important; }
-        .text-lg { font-size: 1rem !important; }
-        
+        .text-7xl {
+          font-size: 2.5rem !important;
+        }
+        .text-6xl {
+          font-size: 2.25rem !important;
+        }
+        .text-5xl {
+          font-size: 2rem !important;
+        }
+        .text-4xl {
+          font-size: 1.75rem !important;
+        }
+        .text-3xl {
+          font-size: 1.5rem !important;
+        }
+        .text-2xl {
+          font-size: 1.25rem !important;
+        }
+        .text-xl {
+          font-size: 1.125rem !important;
+        }
+        .text-lg {
+          font-size: 1rem !important;
+        }
+
         /* Adjust spacing */
-        .space-y-6 > * + * { margin-top: 1rem !important; }
-        .space-y-4 > * + * { margin-top: 0.75rem !important; }
-        .space-y-3 > * + * { margin-top: 0.5rem !important; }
-        
+        .space-y-6 > * + * {
+          margin-top: 1rem !important;
+        }
+        .space-y-4 > * + * {
+          margin-top: 0.75rem !important;
+        }
+        .space-y-3 > * + * {
+          margin-top: 0.5rem !important;
+        }
+
         /* Smaller padding for containers */
-        .p-8 { padding: 1.5rem !important; }
-        .p-6 { padding: 1rem !important; }
-        .p-4 { padding: 0.75rem !important; }
-        
+        .p-8 {
+          padding: 1.5rem !important;
+        }
+        .p-6 {
+          padding: 1rem !important;
+        }
+        .p-4 {
+          padding: 0.75rem !important;
+        }
+
         /* Mobile header adjustments */
         .mobile-header-compact {
           flex-direction: column;
           gap: 0.5rem;
         }
-        
+
         /* Better mobile card styling */
         .mobile-card {
           max-width: 20rem;
           margin: 0 auto;
         }
-        
+
         /* Hide less important text on mobile */
         .mobile-hide {
           display: none !important;
         }
       }
-      
+
       @media (max-width: 640px) {
         /* Even smaller adjustments for very small screens */
-        .text-7xl { font-size: 2rem !important; }
-        .text-6xl { font-size: 1.875rem !important; }
-        .text-5xl { font-size: 1.5rem !important; }
-        .text-4xl { font-size: 1.375rem !important; }
+        .text-7xl {
+          font-size: 2rem !important;
+        }
+        .text-6xl {
+          font-size: 1.875rem !important;
+        }
+        .text-5xl {
+          font-size: 1.5rem !important;
+        }
+        .text-4xl {
+          font-size: 1.375rem !important;
+        }
       }
-      
+
       /* Landscape mode adjustments for mobile */
       @media (max-height: 500px) and (orientation: landscape) {
         .slide {
           padding-top: 3.5rem; /* Less top padding in landscape */
         }
-        
+
         /* Even smaller text in landscape */
-        .text-7xl { font-size: 2rem !important; }
-        .text-6xl { font-size: 1.75rem !important; }
-        .text-5xl { font-size: 1.5rem !important; }
-        .text-4xl { font-size: 1.25rem !important; }
-        .text-3xl { font-size: 1.125rem !important; }
-        .text-2xl { font-size: 1rem !important; }
+        .text-7xl {
+          font-size: 2rem !important;
+        }
+        .text-6xl {
+          font-size: 1.75rem !important;
+        }
+        .text-5xl {
+          font-size: 1.5rem !important;
+        }
+        .text-4xl {
+          font-size: 1.25rem !important;
+        }
+        .text-3xl {
+          font-size: 1.125rem !important;
+        }
+        .text-2xl {
+          font-size: 1rem !important;
+        }
       }
     </style>
   </head>
@@ -156,11 +204,19 @@
     <header
       class="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-80 backdrop-blur-sm p-2 md:p-4 z-50"
     >
-      <div class="container mx-auto flex justify-between items-center mobile-header-compact">
-        <h1 class="text-base md:text-xl font-bold text-white">Claude Code: TDD by AI</h1>
+      <div
+        class="container mx-auto flex justify-between items-center mobile-header-compact"
+      >
+        <h1 class="text-base md:text-xl font-bold text-white">
+          Claude Code: TDD by AI
+        </h1>
         <div class="text-center">
-          <p class="text-xs md:text-sm text-gray-300 mobile-hide">Join the Q&A!</p>
-          <p class="text-sm md:text-lg font-bold text-white">slido.com #2474173</p>
+          <p class="text-xs md:text-sm text-gray-300 mobile-hide">
+            Join the Q&A!
+          </p>
+          <p class="text-sm md:text-lg font-bold text-white">
+            slido.com #2474173
+          </p>
         </div>
       </div>
     </header>
@@ -176,7 +232,9 @@
             >
               Claude Code: Teaching an AI to TDD
             </h1>
-            <p class="mt-4 text-xl md:text-2xl lg:text-3xl font-light text-gray-300">
+            <p
+              class="mt-4 text-xl md:text-2xl lg:text-3xl font-light text-gray-300"
+            >
               (So I Don't Have To)
             </p>
             <div class="mt-12 text-lg text-gray-400">
@@ -188,33 +246,51 @@
 
         <!-- Slide 2: The Goal -->
         <section id="goal" class="slide">
-          <div class="container mx-auto max-w-4xl text-left fade-in px-2 md:px-4">
-            <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-8 text-indigo-400">
+          <div
+            class="container mx-auto max-w-4xl text-left fade-in px-2 md:px-4"
+          >
+            <h2
+              class="text-2xl md:text-4xl font-bold mb-4 md:mb-8 text-indigo-400"
+            >
               The "Why": My Experiment's Goals
             </h2>
             <div class="space-y-4 md:space-y-6">
               <div class="space-y-2 md:space-y-3">
                 <p class="text-base md:text-xl text-gray-200 flex items-start">
                   <span class="text-indigo-400 mr-2 flex-shrink-0">➤</span>
-                  <span>As engineers, we strive for deep work, but context-switching is a constant
-                  battle between Linear, IDEs, GitHub, etc.</span>
+                  <span
+                    >As engineers, we strive for deep work, but
+                    context-switching is a constant battle between Linear, IDEs,
+                    GitHub, etc.</span
+                  >
                 </p>
                 <p class="text-base md:text-xl text-gray-200 flex items-start">
                   <span class="text-indigo-400 mr-2 flex-shrink-0">➤</span>
-                  <span>This back-and-forth creates friction and mental overhead.</span>
+                  <span
+                    >This back-and-forth creates friction and mental
+                    overhead.</span
+                  >
                 </p>
               </div>
-              
+
               <div class="bg-gray-800 p-3 md:p-4 rounded-lg space-y-3">
                 <div>
-                  <h3 class="font-bold text-white text-base md:text-lg mb-1">Primary Goal:</h3>
-                  <p class="text-sm md:text-lg text-gray-300">Could an AI assistant like Claude reduce this friction and help
-                  me stay in a state of flow?</p>
+                  <h3 class="font-bold text-white text-base md:text-lg mb-1">
+                    Primary Goal:
+                  </h3>
+                  <p class="text-sm md:text-lg text-gray-300">
+                    Could an AI assistant like Claude reduce this friction and
+                    help me stay in a state of flow?
+                  </p>
                 </div>
                 <div>
-                  <h3 class="font-bold text-white text-base md:text-lg mb-1">Secondary Goal:</h3>
-                  <p class="text-sm md:text-lg text-gray-300">Could it help enforce best practices, like TDD, that require
-                  active self-discipline?</p>
+                  <h3 class="font-bold text-white text-base md:text-lg mb-1">
+                    Secondary Goal:
+                  </h3>
+                  <p class="text-sm md:text-lg text-gray-300">
+                    Could it help enforce best practices, like TDD, that require
+                    active self-discipline?
+                  </p>
                 </div>
               </div>
             </div>
@@ -230,7 +306,9 @@
             <p class="text-lg md:text-xl text-gray-300 mb-6 md:mb-12">
               A typical feature involves a lot of tool-hopping...
             </p>
-            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
+            <div
+              class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-4 lg:gap-6"
+            >
               <div
                 class="bg-gray-800 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
@@ -242,7 +320,9 @@
               <div
                 class="bg-gray-800 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-xs md:text-sm text-gray-400">Tool: IDE / GitHub</p>
+                <p class="text-xs md:text-sm text-gray-400">
+                  Tool: IDE / GitHub
+                </p>
                 <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   2. Investigate Code
                 </h3>
@@ -290,7 +370,9 @@
               <div
                 class="bg-gray-800 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-xs md:text-sm text-gray-400">Tool: Web/API Client</p>
+                <p class="text-xs md:text-sm text-gray-400">
+                  Tool: Web/API Client
+                </p>
                 <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   8. Manual Testing
                 </h3>
@@ -298,7 +380,9 @@
               <div
                 class="bg-gray-800 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-xs md:text-sm text-gray-400">Tool: GitHub / IDE</p>
+                <p class="text-xs md:text-sm text-gray-400">
+                  Tool: GitHub / IDE
+                </p>
                 <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   9. Address Feedback
                 </h3>
@@ -312,7 +396,9 @@
                 </h3>
               </div>
             </div>
-            <p class="mt-8 md:mt-12 text-base md:text-xl italic text-gray-400 px-4">
+            <p
+              class="mt-8 md:mt-12 text-base md:text-xl italic text-gray-400 px-4"
+            >
               The key takeaway: a huge number of context switches.
             </p>
           </div>
@@ -337,11 +423,15 @@
                 class="mt-8 flex flex-col md:flex-row justify-around text-center"
               >
                 <div class="p-4">
-                  <p class="text-3xl md:text-5xl font-extrabold text-red-400">~1 hour</p>
+                  <p class="text-3xl md:text-5xl font-extrabold text-red-400">
+                    ~1 hour
+                  </p>
                   <p class="text-lg text-gray-400">Manual Estimate</p>
                 </div>
                 <div class="p-4">
-                  <p class="text-3xl md:text-5xl font-extrabold text-green-400">~15 mins</p>
+                  <p class="text-3xl md:text-5xl font-extrabold text-green-400">
+                    ~15 mins
+                  </p>
                   <p class="text-lg text-gray-400">Actual Time with Claude</p>
                 </div>
               </div>
@@ -417,7 +507,9 @@
                   /></svg
                 >The Good Bits
               </h3>
-              <ul class="space-y-2 md:space-y-4 text-base md:text-lg text-gray-200">
+              <ul
+                class="space-y-2 md:space-y-4 text-base md:text-lg text-gray-200"
+              >
                 <li>
                   <strong class="text-white">Unprecedented Speed:</strong> TDD
                   cycles were incredibly fast.
@@ -456,7 +548,9 @@
                   /></svg
                 >The Nuances & Friction
               </h3>
-              <ul class="space-y-2 md:space-y-4 text-base md:text-lg text-gray-200">
+              <ul
+                class="space-y-2 md:space-y-4 text-base md:text-lg text-gray-200"
+              >
                 <li>
                   <strong class="text-white">Context is King:</strong> It
                   <strong>can</strong>
@@ -496,7 +590,9 @@
                   Define the strategy, the process, and the end goal.
                 </p>
               </div>
-              <div class="text-3xl md:text-5xl text-indigo-400 font-bold">+</div>
+              <div class="text-3xl md:text-5xl text-indigo-400 font-bold">
+                +
+              </div>
               <div class="bg-gray-800 p-8 rounded-lg text-center">
                 <p class="text-3xl md:text-5xl mb-4">🤖</p>
                 <h3 class="text-2xl font-bold text-white">The AI's Role</h3>
@@ -516,7 +612,9 @@
             >
               Live Demo
             </h2>
-            <div class="text-left bg-gray-900 p-4 md:p-8 rounded-lg space-y-4 text-base md:text-xl">
+            <div
+              class="text-left bg-gray-900 p-4 md:p-8 rounded-lg space-y-4 text-base md:text-xl"
+            >
               <p>
                 <strong class="text-indigo-300">Goal:</strong> Showcase how a
                 well-crafted instruction file (<code>CLAUDE.md</code>) can
@@ -575,19 +673,31 @@
               </div>
               <div>
                 <h3 class="text-2xl font-bold text-white mb-4">
-                  Proposed Next Steps for Pleo
+                  How can you get started?
                 </h3>
                 <ol
                   class="list-decimal list-inside space-y-3 text-lg text-gray-200"
                 >
-                  <li>Onboard once procurement is finalized.</li>
                   <li>
-                    Develop shared <code>CLAUDE.md</code> best practices for a
-                    one-test-at-a-time TDD cycle.
+                    <strong class="text-blue-400"
+                      >Start Small, Learn Fast:</strong
+                    >
+                    Pick one repetitive coding task and experiment with AI
+                    collaboration to reduce your daily toil.
                   </li>
                   <li>
-                    Leverage the VSCode extension for a more integrated review
-                    workflow.
+                    <strong class="text-green-400"
+                      >Be an Active Partner:</strong
+                    >
+                    Don't treat AI as a replacement - guide it, review its work,
+                    and step in when it goes off track.
+                  </li>
+                  <li>
+                    <strong class="text-purple-400"
+                      >Document Your Process:</strong
+                    >
+                    Create your own instruction patterns and workflows that work
+                    for your coding style and share learnings with teammates.
                   </li>
                 </ol>
               </div>
@@ -636,11 +746,42 @@
         fadeInObserver.observe(section);
       });
 
-      // --- Arrow Key Navigation Logic ---
+      // --- Arrow Key Navigation Logic with Anchor Support ---
       const slides = document.querySelectorAll(".slide");
       let currentSlideIndex = 0;
 
-      // Observer to update the current slide index when user scrolls with mouse/trackpad
+      // Function to update URL hash without triggering scroll
+      function updateUrlHash(slideId) {
+        const newUrl = `${window.location.pathname}${window.location.search}#${slideId}`;
+        window.history.replaceState({ slideId }, "", newUrl);
+      }
+
+      // Function to navigate to a specific slide by ID
+      function navigateToSlide(slideId, smooth = true) {
+        const targetSlide = document.getElementById(slideId);
+        if (targetSlide) {
+          const slideIndex = Array.from(slides).indexOf(targetSlide);
+          if (slideIndex !== -1) {
+            currentSlideIndex = slideIndex;
+            targetSlide.scrollIntoView({
+              behavior: smooth ? "smooth" : "auto",
+              block: "start",
+            });
+            updateUrlHash(slideId);
+          }
+        }
+      }
+
+      // Handle initial load with hash
+      function handleInitialHash() {
+        const hash = window.location.hash.replace("#", "");
+        if (hash && document.getElementById(hash)) {
+          // Use setTimeout to ensure DOM is ready
+          setTimeout(() => navigateToSlide(hash, false), 100);
+        }
+      }
+
+      // Observer to update the current slide index and URL when user scrolls with mouse/trackpad
       const navigationObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -648,6 +789,7 @@
             if (entry.isIntersecting && entry.intersectionRatio >= 0.7) {
               const intersectingSlide = entry.target;
               currentSlideIndex = Array.from(slides).indexOf(intersectingSlide);
+              updateUrlHash(intersectingSlide.id);
             }
           });
         },
@@ -660,22 +802,33 @@
         navigationObserver.observe(slide);
       });
 
+      // Handle hash changes (back/forward navigation)
+      window.addEventListener("hashchange", () => {
+        const hash = window.location.hash.replace("#", "");
+        if (hash && document.getElementById(hash)) {
+          navigateToSlide(hash, true);
+        }
+      });
+
       // Event listener for keyboard navigation
       document.addEventListener("keydown", (e) => {
         if (e.key === "ArrowDown" || e.key === "ArrowRight") {
           e.preventDefault();
           if (currentSlideIndex < slides.length - 1) {
             const nextSlide = slides[currentSlideIndex + 1];
-            nextSlide.scrollIntoView({ behavior: "smooth", block: "start" });
+            navigateToSlide(nextSlide.id, true);
           }
         } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
           e.preventDefault();
           if (currentSlideIndex > 0) {
             const prevSlide = slides[currentSlideIndex - 1];
-            prevSlide.scrollIntoView({ behavior: "smooth", block: "start" });
+            navigateToSlide(prevSlide.id, true);
           }
         }
       });
+
+      // Initialize on page load
+      handleInitialHash();
     </script>
   </body>
 </html>

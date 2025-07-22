@@ -38,6 +38,7 @@
         align-items: center;
         padding: 2rem 4rem; /* Added more horizontal padding */
         scroll-snap-align: start; /* Snap to the start of each slide */
+        overflow-y: auto; /* Allow slide content to scroll on mobile if needed */
       }
       /* Animation for elements appearing on scroll */
       .fade-in {
@@ -61,18 +62,105 @@
         font-weight: 500;
         border: 1px solid rgba(139, 92, 246, 0.3);
       }
+      
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+        .slide {
+          padding: 1rem;
+          padding-top: 5rem; /* Account for header */
+          min-height: 100vh; /* Ensure minimum height */
+          height: auto; /* Allow height to grow if content is too long */
+        }
+        
+        /* Better scroll handling on mobile */
+        .scroll-container {
+          -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        }
+        
+        /* Special handling for workflow slide on mobile */
+        #workflow-before .slide {
+          height: auto;
+          min-height: 100vh;
+        }
+        
+        /* For the good/bad slide on mobile - allow scrolling within slide */
+        #good-bad {
+          height: 100vh;
+          overflow-y: auto;
+        }
+        
+        /* Smaller text sizes on mobile */
+        .text-7xl { font-size: 2.5rem !important; }
+        .text-6xl { font-size: 2.25rem !important; }
+        .text-5xl { font-size: 2rem !important; }
+        .text-4xl { font-size: 1.75rem !important; }
+        .text-3xl { font-size: 1.5rem !important; }
+        .text-2xl { font-size: 1.25rem !important; }
+        .text-xl { font-size: 1.125rem !important; }
+        .text-lg { font-size: 1rem !important; }
+        
+        /* Adjust spacing */
+        .space-y-6 > * + * { margin-top: 1rem !important; }
+        .space-y-4 > * + * { margin-top: 0.75rem !important; }
+        .space-y-3 > * + * { margin-top: 0.5rem !important; }
+        
+        /* Smaller padding for containers */
+        .p-8 { padding: 1.5rem !important; }
+        .p-6 { padding: 1rem !important; }
+        .p-4 { padding: 0.75rem !important; }
+        
+        /* Mobile header adjustments */
+        .mobile-header-compact {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        
+        /* Better mobile card styling */
+        .mobile-card {
+          max-width: 20rem;
+          margin: 0 auto;
+        }
+        
+        /* Hide less important text on mobile */
+        .mobile-hide {
+          display: none !important;
+        }
+      }
+      
+      @media (max-width: 640px) {
+        /* Even smaller adjustments for very small screens */
+        .text-7xl { font-size: 2rem !important; }
+        .text-6xl { font-size: 1.875rem !important; }
+        .text-5xl { font-size: 1.5rem !important; }
+        .text-4xl { font-size: 1.375rem !important; }
+      }
+      
+      /* Landscape mode adjustments for mobile */
+      @media (max-height: 500px) and (orientation: landscape) {
+        .slide {
+          padding-top: 3.5rem; /* Less top padding in landscape */
+        }
+        
+        /* Even smaller text in landscape */
+        .text-7xl { font-size: 2rem !important; }
+        .text-6xl { font-size: 1.75rem !important; }
+        .text-5xl { font-size: 1.5rem !important; }
+        .text-4xl { font-size: 1.25rem !important; }
+        .text-3xl { font-size: 1.125rem !important; }
+        .text-2xl { font-size: 1rem !important; }
+      }
     </style>
   </head>
   <body>
     <!-- Header remains fixed over the content -->
     <header
-      class="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-80 backdrop-blur-sm p-4 z-50"
+      class="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-80 backdrop-blur-sm p-2 md:p-4 z-50"
     >
-      <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-xl font-bold text-white">Claude Code: TDD by AI</h1>
+      <div class="container mx-auto flex justify-between items-center mobile-header-compact">
+        <h1 class="text-base md:text-xl font-bold text-white">Claude Code: TDD by AI</h1>
         <div class="text-center">
-          <p class="text-sm text-gray-300">Join the Q&A!</p>
-          <p class="text-lg font-bold text-white">slido.com #2474173</p>
+          <p class="text-xs md:text-sm text-gray-300 mobile-hide">Join the Q&A!</p>
+          <p class="text-sm md:text-lg font-bold text-white">slido.com #2474173</p>
         </div>
       </div>
     </header>
@@ -88,7 +176,7 @@
             >
               Claude Code: Teaching an AI to TDD
             </h1>
-            <p class="mt-4 text-2xl md:text-3xl font-light text-gray-300">
+            <p class="mt-4 text-xl md:text-2xl lg:text-3xl font-light text-gray-300">
               (So I Don't Have To)
             </p>
             <div class="mt-12 text-lg text-gray-400">
@@ -100,126 +188,131 @@
 
         <!-- Slide 2: The Goal -->
         <section id="goal" class="slide">
-          <div class="container mx-auto max-w-4xl text-left fade-in">
-            <h2 class="text-4xl font-bold mb-8 text-indigo-400">
+          <div class="container mx-auto max-w-4xl text-left fade-in px-2 md:px-4">
+            <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-8 text-indigo-400">
               The "Why": My Experiment's Goals
             </h2>
-            <ul class="space-y-6 text-xl text-gray-200">
-              <li class="flex items-start">
-                <span class="text-indigo-400 mr-4">&#10148;</span> As engineers,
-                we strive for deep work, but context-switching is a constant
-                battle between Linear, IDEs, GitHub, etc.
-              </li>
-              <li class="flex items-start">
-                <span class="text-indigo-400 mr-4">&#10148;</span> This
-                back-and-forth creates friction and mental overhead.
-              </li>
-              <li class="flex items-start">
-                <span class="font-bold text-white mr-4">Primary Goal:</span>
-                Could an AI assistant like Claude reduce this friction and help
-                me stay in a state of flow?
-              </li>
-              <li class="flex items-start">
-                <span class="font-bold text-white mr-4">Secondary Goal:</span>
-                Could it help enforce best practices, like TDD, that require
-                active self-discipline?
-              </li>
-            </ul>
+            <div class="space-y-4 md:space-y-6">
+              <div class="space-y-2 md:space-y-3">
+                <p class="text-base md:text-xl text-gray-200 flex items-start">
+                  <span class="text-indigo-400 mr-2 flex-shrink-0">➤</span>
+                  <span>As engineers, we strive for deep work, but context-switching is a constant
+                  battle between Linear, IDEs, GitHub, etc.</span>
+                </p>
+                <p class="text-base md:text-xl text-gray-200 flex items-start">
+                  <span class="text-indigo-400 mr-2 flex-shrink-0">➤</span>
+                  <span>This back-and-forth creates friction and mental overhead.</span>
+                </p>
+              </div>
+              
+              <div class="bg-gray-800 p-3 md:p-4 rounded-lg space-y-3">
+                <div>
+                  <h3 class="font-bold text-white text-base md:text-lg mb-1">Primary Goal:</h3>
+                  <p class="text-sm md:text-lg text-gray-300">Could an AI assistant like Claude reduce this friction and help
+                  me stay in a state of flow?</p>
+                </div>
+                <div>
+                  <h3 class="font-bold text-white text-base md:text-lg mb-1">Secondary Goal:</h3>
+                  <p class="text-sm md:text-lg text-gray-300">Could it help enforce best practices, like TDD, that require
+                  active self-discipline?</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         <!-- Slide 3: My Workflow: Before Claude -->
         <section id="workflow-before" class="slide">
           <div class="container mx-auto max-w-6xl text-center fade-in">
-            <h2 class="text-4xl font-bold mb-8 text-indigo-400">
+            <h2 class="text-4xl font-bold mb-6 md:mb-8 text-indigo-400">
               My Workflow: The "Before" Times
             </h2>
-            <p class="text-xl text-gray-300 mb-12">
+            <p class="text-lg md:text-xl text-gray-300 mb-6 md:mb-12">
               A typical feature involves a lot of tool-hopping...
             </p>
-            <div class="flex flex-wrap justify-center gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
               <div
-                class="bg-gray-800 p-4 rounded-lg w-56 text-left transform transition-transform hover:scale-105"
+                class="bg-gray-800 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-sm text-gray-400">Tool: Linear</p>
-                <h3 class="font-bold text-lg text-white mt-1">
+                <p class="text-xs md:text-sm text-gray-400">Tool: Linear</p>
+                <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   1. Understand Problem
                 </h3>
               </div>
               <div
-                class="bg-gray-800 p-4 rounded-lg w-56 text-left transform transition-transform hover:scale-105"
+                class="bg-gray-800 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-sm text-gray-400">Tool: IDE / GitHub</p>
-                <h3 class="font-bold text-lg text-white mt-1">
+                <p class="text-xs md:text-sm text-gray-400">Tool: IDE / GitHub</p>
+                <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   2. Investigate Code
                 </h3>
               </div>
               <div
-                class="bg-red-900/50 border border-red-500 p-4 rounded-lg w-56 text-left transform transition-transform hover:scale-105"
+                class="bg-red-900/50 border border-red-500 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-sm text-red-300">Tool: IDE</p>
-                <h3 class="font-bold text-lg text-white mt-1">
+                <p class="text-xs md:text-sm text-red-300">Tool: IDE</p>
+                <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   3. Write Failing Test (Red)
                 </h3>
               </div>
               <div
-                class="bg-green-900/50 border border-green-500 p-4 rounded-lg w-56 text-left transform transition-transform hover:scale-105"
+                class="bg-green-900/50 border border-green-500 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-sm text-green-300">Tool: IDE</p>
-                <h3 class="font-bold text-lg text-white mt-1">
+                <p class="text-xs md:text-sm text-green-300">Tool: IDE</p>
+                <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   4. Make Test Pass (Green)
                 </h3>
               </div>
               <div
-                class="bg-gray-800 p-4 rounded-lg w-56 text-left transform transition-transform hover:scale-105"
+                class="bg-gray-800 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-sm text-gray-400">Tool: IDE</p>
-                <h3 class="font-bold text-lg text-white mt-1">
+                <p class="text-xs md:text-sm text-gray-400">Tool: IDE</p>
+                <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   5. Add Functional Tests
                 </h3>
               </div>
               <div
-                class="bg-gray-800 p-4 rounded-lg w-56 text-left transform transition-transform hover:scale-105"
+                class="bg-gray-800 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-sm text-gray-400">Tool: Git</p>
-                <h3 class="font-bold text-lg text-white mt-1">
+                <p class="text-xs md:text-sm text-gray-400">Tool: Git</p>
+                <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   6. Commit & Push
                 </h3>
               </div>
               <div
-                class="bg-gray-800 p-4 rounded-lg w-56 text-left transform transition-transform hover:scale-105"
+                class="bg-gray-800 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-sm text-gray-400">Tool: GitHub</p>
-                <h3 class="font-bold text-lg text-white mt-1">
+                <p class="text-xs md:text-sm text-gray-400">Tool: GitHub</p>
+                <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   7. Create Pull Request
                 </h3>
               </div>
               <div
-                class="bg-gray-800 p-4 rounded-lg w-56 text-left transform transition-transform hover:scale-105"
+                class="bg-gray-800 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-sm text-gray-400">Tool: Web/API Client</p>
-                <h3 class="font-bold text-lg text-white mt-1">
+                <p class="text-xs md:text-sm text-gray-400">Tool: Web/API Client</p>
+                <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   8. Manual Testing
                 </h3>
               </div>
               <div
-                class="bg-gray-800 p-4 rounded-lg w-56 text-left transform transition-transform hover:scale-105"
+                class="bg-gray-800 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-sm text-gray-400">Tool: GitHub / IDE</p>
-                <h3 class="font-bold text-lg text-white mt-1">
+                <p class="text-xs md:text-sm text-gray-400">Tool: GitHub / IDE</p>
+                <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   9. Address Feedback
                 </h3>
               </div>
               <div
-                class="bg-gray-800 p-4 rounded-lg w-56 text-left transform transition-transform hover:scale-105"
+                class="bg-gray-800 p-2 md:p-4 rounded-lg text-left transform transition-transform md:hover:scale-105"
               >
-                <p class="text-sm text-gray-400">Tool: GitHub</p>
-                <h3 class="font-bold text-lg text-white mt-1">
+                <p class="text-xs md:text-sm text-gray-400">Tool: GitHub</p>
+                <h3 class="font-bold text-sm md:text-lg text-white mt-1">
                   10. Merge & Deploy
                 </h3>
               </div>
             </div>
-            <p class="mt-12 text-xl italic text-gray-400">
+            <p class="mt-8 md:mt-12 text-base md:text-xl italic text-gray-400 px-4">
               The key takeaway: a huge number of context switches.
             </p>
           </div>
@@ -244,11 +337,11 @@
                 class="mt-8 flex flex-col md:flex-row justify-around text-center"
               >
                 <div class="p-4">
-                  <p class="text-5xl font-extrabold text-red-400">~1 hour</p>
+                  <p class="text-3xl md:text-5xl font-extrabold text-red-400">~1 hour</p>
                   <p class="text-lg text-gray-400">Manual Estimate</p>
                 </div>
                 <div class="p-4">
-                  <p class="text-5xl font-extrabold text-green-400">~15 mins</p>
+                  <p class="text-3xl md:text-5xl font-extrabold text-green-400">~15 mins</p>
                   <p class="text-lg text-gray-400">Actual Time with Claude</p>
                 </div>
               </div>
@@ -304,16 +397,16 @@
         <!-- Slide 6 & 7: Good & Bad -->
         <section id="good-bad" class="slide">
           <div
-            class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-16 fade-in"
+            class="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 fade-in"
           >
             <!-- The Good Bits -->
-            <div class="bg-gray-800 p-8 rounded-lg">
+            <div class="bg-gray-800 p-4 md:p-8 rounded-lg">
               <h3
-                class="text-3xl font-bold mb-6 text-green-400 flex items-center"
+                class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-green-400 flex items-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-8 w-8 mr-3"
+                  class="h-6 w-6 md:h-8 md:w-8 mr-2 md:mr-3"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -324,7 +417,7 @@
                   /></svg
                 >The Good Bits
               </h3>
-              <ul class="space-y-4 text-lg text-gray-200">
+              <ul class="space-y-2 md:space-y-4 text-base md:text-lg text-gray-200">
                 <li>
                   <strong class="text-white">Unprecedented Speed:</strong> TDD
                   cycles were incredibly fast.
@@ -344,13 +437,13 @@
               </ul>
             </div>
             <!-- The Nuances -->
-            <div class="bg-gray-800 p-8 rounded-lg">
+            <div class="bg-gray-800 p-4 md:p-8 rounded-lg">
               <h3
-                class="text-3xl font-bold mb-6 text-yellow-400 flex items-center"
+                class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-yellow-400 flex items-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-8 w-8 mr-3"
+                  class="h-6 w-6 md:h-8 md:w-8 mr-2 md:mr-3"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -363,7 +456,7 @@
                   /></svg
                 >The Nuances & Friction
               </h3>
-              <ul class="space-y-4 text-lg text-gray-200">
+              <ul class="space-y-2 md:space-y-4 text-base md:text-lg text-gray-200">
                 <li>
                   <strong class="text-white">Context is King:</strong> It
                   <strong>can</strong>
@@ -394,18 +487,18 @@
               interacting with it.
             </p>
             <div
-              class="flex flex-col md:flex-row items-center justify-center gap-8"
+              class="flex flex-col lg:flex-row items-center justify-center gap-4 md:gap-8"
             >
               <div class="bg-gray-800 p-8 rounded-lg text-center">
-                <p class="text-5xl mb-4">🧑‍💻</p>
+                <p class="text-3xl md:text-5xl mb-4">🧑‍💻</p>
                 <h3 class="text-2xl font-bold text-white">The Human's Role</h3>
                 <p class="text-lg text-gray-300 mt-2">
                   Define the strategy, the process, and the end goal.
                 </p>
               </div>
-              <div class="text-5xl text-indigo-400 font-bold">+</div>
+              <div class="text-3xl md:text-5xl text-indigo-400 font-bold">+</div>
               <div class="bg-gray-800 p-8 rounded-lg text-center">
-                <p class="text-5xl mb-4">🤖</p>
+                <p class="text-3xl md:text-5xl mb-4">🤖</p>
                 <h3 class="text-2xl font-bold text-white">The AI's Role</h3>
                 <p class="text-lg text-gray-300 mt-2">
                   Execute the steps within that strategy flawlessly.
@@ -423,7 +516,7 @@
             >
               Live Demo
             </h2>
-            <div class="text-left bg-gray-900 p-8 rounded-lg space-y-4 text-xl">
+            <div class="text-left bg-gray-900 p-4 md:p-8 rounded-lg space-y-4 text-base md:text-xl">
               <p>
                 <strong class="text-indigo-300">Goal:</strong> Showcase how a
                 well-crafted instruction file (<code>CLAUDE.md</code>) can
@@ -453,7 +546,7 @@
             <h2 class="text-4xl font-bold mb-8 text-indigo-400 text-center">
               Key Takeaways & Next Steps
             </h2>
-            <div class="grid md:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
               <div>
                 <h3 class="text-2xl font-bold text-white mb-4">
                   Key Takeaways

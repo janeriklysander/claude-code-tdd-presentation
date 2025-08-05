@@ -610,8 +610,7 @@
               </div>
               <p class="mt-8 text-center text-xl bg-gray-700 p-4 rounded-md">
                 <strong class="text-white">Key Finding:</strong> It wasn't a
-                "one-shot" solution. It was a true
-                <strong>collaborator</strong>, requiring iteration.
+                "one-shot" solution. I had to provide feedback and iterate.
               </p>
               <p
                 class="mt-4 text-center text-sm text-yellow-300 bg-yellow-900/30 py-2 px-4 rounded-full"
@@ -623,63 +622,188 @@
           </div>
         </section>
 
-        <!-- NEW SLIDE: The Learning Curve -->
-        <section id="learning-curve" class="slide">
-          <div class="container mx-auto max-w-6xl fade-in">
+        <!-- Slide 5: Experiment 2 -->
+        <section id="exp2" class="slide">
+          <div class="container mx-auto max-w-4xl fade-in">
             <h2 class="text-4xl font-bold mb-8 text-indigo-400 text-center">
-              The Learning Curve: Chaos vs. Collaboration
+              Experiment Pt. 2: The Real Project
             </h2>
+            <div class="bg-gray-800 p-8 rounded-lg shadow-2xl">
+              <p class="text-lg">
+                <strong class="text-indigo-300">Task:</strong> Build a complete
+                browser extension from scratch.
+              </p>
+              <p class="mt-4 text-lg">
+                <strong class="text-indigo-300">Approach:</strong> Started with
+                Claude Code's auto-accept mode - just accepting whatever it
+                suggested.
+              </p>
+              <div
+                class="mt-6 bg-red-900/20 border border-red-500 p-6 rounded-lg relative"
+              >
+                <img
+                  src="admiral-ackbar.png"
+                  alt="It's a trap!"
+                  class="absolute top-4 right-4 w-32 h-32 md:w-40 md:h-40 opacity-80"
+                />
+                <!-- Comic book speech bubble from Admiral Ackbar -->
+                <div class="absolute -top-4 right-14 md:right-16 bg-white text-black px-4 py-3 rounded-full shadow-2xl text-sm md:text-base font-black border-4 border-black z-10 transform -rotate-3" style="font-family: 'Arial Black', sans-serif; letter-spacing: 0.5px;">
+                  IT'S A TRAP!
+                  <!-- Comic book style speech bubble tail -->
+                  <div class="absolute bottom-2 -right-3 w-0 h-0 border-l-12 border-l-white border-t-8 border-t-transparent border-b-8 border-b-transparent transform rotate-12"></div>
+                  <div class="absolute bottom-2 -right-2 w-0 h-0 border-l-8 border-l-black border-t-6 border-t-transparent border-b-6 border-b-transparent transform rotate-12"></div>
+                  <!-- Small additional bubbles for comic effect -->
+                  <div class="absolute -bottom-6 -right-1 w-3 h-3 bg-white border-2 border-black rounded-full"></div>
+                  <div class="absolute -bottom-10 right-2 w-2 h-2 bg-white border-2 border-black rounded-full"></div>
+                </div>
+                <h3 class="text-xl font-bold text-red-400 mb-3">
+                  The Auto-Accept Trap
+                </h3>
+                <ul class="space-y-2 text-gray-200">
+                  <li class="flex items-start">
+                    <span class="text-red-400 mr-2">•</span>
+                    <span
+                      >Fed it a large PRD, hit auto-accept and just sat
+                      back</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-400 mr-2">•</span>
+                    <span
+                      >Generated mountains of code without understanding</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-400 mr-2">•</span>
+                    <span
+                      >Created duplicate modules (ESM vs CommonJS
+                      confusion)</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-400 mr-2">•</span>
+                    <span
+                      >No TDD, in fact no tests at all, no structure, just...
+                      chaos</span
+                    >
+                  </li>
+                </ul>
+              </div>
+              <p class="mt-6 text-center text-xl font-bold text-yellow-400">
+                Lesson: Auto-pilot mode creates a mess that's harder to fix than
+                starting fresh.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- NEW SLIDE: Lessons from the Auto-Accept Trap -->
+        <section id="learning-curve" class="slide">
+          <div class="container mx-auto max-w-5xl fade-in">
+            <h2 class="text-4xl font-bold mb-8 text-indigo-400 text-center">
+              Lessons from the Auto-Accept Trap
+            </h2>
+
+            <!-- Core Learning -->
+            <div
+              class="bg-yellow-900/30 border border-yellow-500 p-6 rounded-lg mb-8"
+            >
+              <h3 class="text-2xl font-bold text-yellow-400 mb-4 text-center">
+                The Core Realization
+              </h3>
+              <p class="text-xl text-center text-gray-200">
+                AI coding tools aren't magic wands—they're powerful
+                <strong class="text-white">collaborators</strong>
+                that amplify your existing engineering practices, both good and
+                bad.
+              </p>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <!-- Chaos Column -->
+              <!-- What Went Wrong -->
               <div class="bg-red-900/20 border border-red-500 p-6 rounded-lg">
                 <h3 class="text-2xl font-bold text-red-400 mb-4">
-                  Attempt 1: Chaos (Auto-Pilot)
+                  What Went Wrong
                 </h3>
-                <div class="space-y-3 text-lg">
-                  <p>
-                    <strong class="text-white">Input:</strong> A large, vague
-                    Product Requirements Document.
-                  </p>
-                  <p>
-                    <strong class="text-white">Process:</strong> "Auto-accept"
-                    mode. No guidance, no TDD.
-                  </p>
-                  <p>
-                    <strong class="text-white">Output:</strong> Confused,
-                    duplicated code (ESM vs CJS), obsolete files, and
-                    frustration.
-                  </p>
-                </div>
+                <ul class="space-y-3 text-lg text-gray-200">
+                  <li class="flex items-start">
+                    <span class="text-red-400 mr-2 flex-shrink-0">•</span>
+                    <span
+                      ><strong>Vague input:</strong> Large PRD without clear,
+                      actionable tasks</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-400 mr-2 flex-shrink-0">•</span>
+                    <span
+                      ><strong>No guardrails:</strong> No TDD, no code review
+                      process</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-400 mr-2 flex-shrink-0">•</span>
+                    <span
+                      ><strong>Passive approach:</strong> "Just generate
+                      everything and I'll sort it out later"</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-400 mr-2 flex-shrink-0">•</span>
+                    <span
+                      ><strong>No context management:</strong> Let the AI run
+                      wild without boundaries</span
+                    >
+                  </li>
+                </ul>
               </div>
-              <!-- Collaboration Column -->
+
+              <!-- What Works Better -->
               <div
                 class="bg-green-900/20 border border-green-500 p-6 rounded-lg"
               >
                 <h3 class="text-2xl font-bold text-green-400 mb-4">
-                  Attempt 2: Collaboration (Co-Pilot)
+                  What Works Better
                 </h3>
-                <div class="space-y-3 text-lg">
-                  <p>
-                    <strong class="text-white">Input:</strong> Small,
-                    well-defined GitHub issues.
-                  </p>
-                  <p>
-                    <strong class="text-white">Process:</strong> Human as
-                    reviewer. Clear context. TDD enforced via
-                    <code>CLAUDE.md</code>.
-                  </p>
-                  <p>
-                    <strong class="text-white">Output:</strong> Modular code,
-                    better separation of concerns, and a predictable, successful
-                    workflow.
-                  </p>
-                </div>
+                <ul class="space-y-3 text-lg text-gray-200">
+                  <li class="flex items-start">
+                    <span class="text-green-400 mr-2 flex-shrink-0">•</span>
+                    <span
+                      ><strong>Clear scope:</strong> Well-defined GitHub issues,
+                      one feature at a time</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-green-400 mr-2 flex-shrink-0">•</span>
+                    <span
+                      ><strong>Process enforcement:</strong> CLAUDE.md files
+                      that enforce TDD discipline</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-green-400 mr-2 flex-shrink-0">•</span>
+                    <span
+                      ><strong>Active partnership:</strong> Human as reviewer
+                      and strategic guide</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-green-400 mr-2 flex-shrink-0">•</span>
+                    <span
+                      ><strong>Iterative approach:</strong> Red-green-refactor
+                      cycles with human oversight</span
+                    >
+                  </li>
+                </ul>
               </div>
             </div>
-            <p class="mt-8 text-center text-xl italic text-gray-300">
-              Treat the AI like a junior engineer: Double down on fundamentals.
-              Break down work, be clear, and provide context.
-            </p>
+
+            <div class="mt-8 bg-gray-800 p-6 rounded-lg">
+              <p class="text-lg text-center text-gray-200">
+                <strong class="text-indigo-300">Bottom line:</strong> The AI
+                magnifies your engineering discipline. If you skip best
+                practices manually, the AI will skip them at <em>scale</em>.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -690,12 +814,13 @@
               The "Aha!" Moment
             </h2>
             <p class="text-xl text-gray-300 mb-8">
-              Task: Build a browser extension to replace the deprecated GitHub
-              Command Palette.
+              After learning from the auto-accept trap, something magical
+              happened...
             </p>
             <div class="bg-gray-900 p-8 rounded-lg shadow-2xl text-left">
               <p class="text-xl mb-4">
-                With a disciplined approach, this became possible:
+                With the right constraints in place, this workflow became
+                reality:
               </p>
               <ol
                 class="list-decimal list-inside space-y-3 text-lg text-gray-300"
@@ -786,16 +911,20 @@
                 <li>
                   <strong class="text-white">Context is King:</strong> It
                   <strong>can</strong>
-                  stick to TDD, but requires frequent context clearing.
+                  stick to TDD, but requires frequent context clearing and
+                  reminding.
                 </li>
                 <li>
-                  <strong class="text-white">Sub-optimal TDD Cycle:</strong> It
-                  defaults to writing many tests at once, then making them all
-                  pass simultaneously.
+                  <strong class="text-white">CLAUDE.md Tuning:</strong> Finding
+                  the right balance takes iteration. Too strict ("write ONE
+                  test") and it stops after one test forever. Too loose and it
+                  writes all tests at once.
                 </li>
                 <li>
-                  <strong class="text-white">The Goal:</strong> The ideal is a
-                  one-test-at-a-time cycle, which needs better prompting.
+                  <strong class="text-white">Never-Ending Refinement:</strong>
+                  Tweaking CLAUDE.md is both a pain and a recommendation.
+                  Experiment, iterate, revert what doesn't work - it's a
+                  continuous improvement cycle.
                 </li>
               </ul>
             </div>
@@ -1093,11 +1222,13 @@
             </div>
 
             <!-- Key changes -->
-            <div class="mt-6 bg-gray-800 p-4 rounded-lg max-w-3xl mx-auto">
-              <h3 class="text-lg md:text-xl font-bold text-green-400 mb-3">
+            <div
+              class="mt-8 md:mt-14 bg-gray-800 p-6 md:p-8 rounded-lg max-w-4xl mx-auto"
+            >
+              <h3 class="text-xl md:text-2xl font-bold text-green-400 mb-3">
                 Key Transformations:
               </h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-left">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
                 <div class="flex items-start gap-2">
                   <span class="text-green-400 flex-shrink-0">✓</span>
                   <span class="text-sm md:text-base text-gray-300">

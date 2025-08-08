@@ -699,109 +699,150 @@
 
         <!-- NEW SLIDE: Lessons from the Auto-Accept Trap -->
         <section id="learning-curve" class="slide">
-          <div class="container mx-auto max-w-5xl fade-in">
+          <div class="container mx-auto max-w-6xl fade-in">
             <h2 class="text-4xl font-bold mb-8 text-indigo-400 text-center">
               Lessons from the Auto-Accept Trap
             </h2>
 
-            <!-- Core Learning -->
-            <div
-              class="bg-yellow-900/30 border border-yellow-500 p-6 rounded-lg mb-8"
-            >
-              <h3 class="text-2xl font-bold text-yellow-400 mb-4 text-center">
-                The Core Realization
-              </h3>
-              <p class="text-xl text-center text-gray-200">
+            <!-- Core Learning with Visual Metaphor -->
+            <div class="mb-12 text-center">
+              <div class="relative mb-8" style="height: 120px;">
+                <!-- Left side - Chaos -->
+                <div class="absolute left-4 top-4">
+                  <div class="bg-red-900/30 border border-red-500 p-3 rounded-lg text-center transform rotate-6">
+                    <div class="text-2xl mb-1">🌪️</div>
+                    <div class="text-xs text-red-300">Chaos at Scale</div>
+                  </div>
+                  <!-- Scale chain -->
+                  <div class="w-px h-8 bg-gray-500 mx-auto mt-1"></div>
+                </div>
+                
+                <!-- Center scale structure -->
+                <div class="absolute left-1/2 top-6 transform -translate-x-1/2">
+                  <!-- Scale base -->
+                  <div class="w-4 h-12 bg-gray-600 rounded mx-auto"></div>
+                  <!-- Scale beam -->
+                  <div class="w-64 h-2 bg-gray-600 rounded absolute top-4 left-1/2 transform -translate-x-1/2"></div>
+                </div>
+                
+                <!-- Center AI amplifier - positioned above scale -->
+                <div class="absolute left-1/2 top-0 transform -translate-x-1/2 bg-purple-900/50 border border-purple-500 px-3 py-1 rounded-full">
+                  <div class="text-sm whitespace-nowrap">🤖 AI Amplifies</div>
+                </div>
+                
+                <!-- Right side - Order -->
+                <div class="absolute right-4 top-2">
+                  <div class="bg-green-900/30 border border-green-500 p-3 rounded-lg text-center transform -rotate-3">
+                    <div class="text-2xl mb-1">⚖️</div>
+                    <div class="text-xs text-green-300">Quality at Speed</div>
+                  </div>
+                  <!-- Scale chain -->
+                  <div class="w-px h-10 bg-gray-500 mx-auto mt-1"></div>
+                </div>
+              </div>
+              
+              <p class="text-xl text-gray-200 max-w-3xl mx-auto">
                 AI coding tools aren't magic wands—they're powerful
-                <strong class="text-white">collaborators</strong>
-                that amplify your existing engineering practices, both good and
-                bad.
+                <strong class="text-white">amplifiers</strong>
+                that magnify your engineering practices, both good and bad.
               </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <!-- What Went Wrong -->
-              <div class="bg-red-900/20 border border-red-500 p-6 rounded-lg">
-                <h3 class="text-2xl font-bold text-red-400 mb-4">
-                  What Went Wrong
+            <!-- Process Flow Comparison -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <!-- Auto-Accept Chaos Flow -->
+              <div class="bg-red-900/10 border border-red-500/50 p-6 rounded-lg">
+                <h3 class="text-2xl font-bold text-red-400 mb-6 text-center">
+                  Auto-Accept Chaos
                 </h3>
-                <ul class="space-y-3 text-lg text-gray-200">
-                  <li class="flex items-start">
-                    <span class="text-red-400 mr-2 flex-shrink-0">•</span>
-                    <span
-                      ><strong>Vague input:</strong> Large PRD without clear,
-                      actionable tasks</span
-                    >
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-red-400 mr-2 flex-shrink-0">•</span>
-                    <span
-                      ><strong>No guardrails:</strong> No TDD, no code review
-                      process</span
-                    >
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-red-400 mr-2 flex-shrink-0">•</span>
-                    <span
-                      ><strong>Passive approach:</strong> "Just generate
-                      everything and I'll sort it out later"</span
-                    >
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-red-400 mr-2 flex-shrink-0">•</span>
-                    <span
-                      ><strong>No context management:</strong> Let the AI run
-                      wild without boundaries</span
-                    >
-                  </li>
-                </ul>
+                
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <div class="bg-red-800/30 border border-red-500 p-2 rounded text-center w-16 h-16 flex flex-col items-center justify-center mr-3">
+                      <div class="text-lg">📄</div>
+                    </div>
+                    <div class="text-red-400 text-xl px-2">→</div>
+                    <div class="flex-1 text-sm text-red-200">Large PRD without clear scope</div>
+                  </div>
+                  
+                  <div class="flex items-center">
+                    <div class="bg-red-800/30 border border-red-500 p-2 rounded text-center w-16 h-16 flex flex-col items-center justify-center mr-3">
+                      <div class="text-lg">🤖</div>
+                    </div>
+                    <div class="text-red-400 text-xl px-2">→</div>
+                    <div class="flex-1 text-sm text-red-200">Generate everything at once</div>
+                  </div>
+                  
+                  <div class="flex items-center">
+                    <div class="bg-red-800/30 border border-red-500 p-2 rounded text-center w-16 h-16 flex flex-col items-center justify-center mr-3">
+                      <div class="text-lg">🌪️</div>
+                    </div>
+                    <div class="text-red-400 text-xl px-2">→</div>
+                    <div class="flex-1 text-sm text-red-200">Messy, unmaintainable codebase</div>
+                  </div>
+                </div>
+                
+                <div class="text-center">
+                  <div class="inline-flex items-center bg-red-900/30 px-4 py-2 rounded-full">
+                    <span class="text-red-300 text-sm">❌ No guardrails, passive approach, chaos at scale</span>
+                  </div>
+                </div>
               </div>
 
-              <!-- What Works Better -->
-              <div
-                class="bg-green-900/20 border border-green-500 p-6 rounded-lg"
-              >
-                <h3 class="text-2xl font-bold text-green-400 mb-4">
-                  What Works Better
+              <!-- Disciplined Partnership Flow -->
+              <div class="bg-green-900/10 border border-green-500/50 p-6 rounded-lg">
+                <h3 class="text-2xl font-bold text-green-400 mb-6 text-center">
+                  Disciplined Partnership
                 </h3>
-                <ul class="space-y-3 text-lg text-gray-200">
-                  <li class="flex items-start">
-                    <span class="text-green-400 mr-2 flex-shrink-0">•</span>
-                    <span
-                      ><strong>Clear scope:</strong> Well-defined GitHub issues,
-                      one feature at a time</span
-                    >
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-green-400 mr-2 flex-shrink-0">•</span>
-                    <span
-                      ><strong>Process enforcement:</strong> CLAUDE.md files
-                      that enforce TDD discipline</span
-                    >
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-green-400 mr-2 flex-shrink-0">•</span>
-                    <span
-                      ><strong>Active partnership:</strong> Human as reviewer
-                      and strategic guide</span
-                    >
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-green-400 mr-2 flex-shrink-0">•</span>
-                    <span
-                      ><strong>Iterative approach:</strong> Red-green-refactor
-                      cycles with human oversight</span
-                    >
-                  </li>
-                </ul>
+                
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <div class="bg-green-800/30 border border-green-500 p-2 rounded text-center w-16 h-16 flex flex-col items-center justify-center mr-3">
+                      <div class="text-lg">🎯</div>
+                    </div>
+                    <div class="text-green-400 text-xl px-2">→</div>
+                    <div class="flex-1 text-sm text-green-200">Clear scope & issues</div>
+                  </div>
+                  
+                  <div class="flex items-center">
+                    <div class="bg-green-800/30 border border-green-500 p-2 rounded text-center w-16 h-16 flex flex-col items-center justify-center mr-3">
+                      <div class="text-lg">⚖️</div>
+                    </div>
+                    <div class="text-green-400 text-xl px-2">→</div>
+                    <div class="flex-1 text-sm text-green-200">TDD process enforcement</div>
+                  </div>
+                  
+                  <div class="flex items-center">
+                    <div class="bg-green-800/30 border border-green-500 p-2 rounded text-center w-16 h-16 flex flex-col items-center justify-center mr-3">
+                      <div class="text-lg">🤝</div>
+                    </div>
+                    <div class="text-green-400 text-xl px-2">→</div>
+                    <div class="flex-1 text-sm text-green-200">Active human partnership</div>
+                  </div>
+                  
+                  <div class="flex items-center">
+                    <div class="bg-green-800/30 border border-green-500 p-2 rounded text-center w-16 h-16 flex flex-col items-center justify-center mr-3">
+                      <div class="text-lg">🔄</div>
+                    </div>
+                    <div class="text-green-400 text-xl px-2">→</div>
+                    <div class="flex-1 text-sm text-green-200">Red-green-refactor cycles</div>
+                  </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                  <div class="inline-flex items-center bg-green-900/30 px-4 py-2 rounded-full">
+                    <span class="text-green-300 text-sm">✓ Structure, oversight, quality at speed</span>
+                  </div>
+                </div>
               </div>
             </div>
 
+            <!-- Bottom line message -->
             <div class="mt-8 bg-gray-800 p-6 rounded-lg">
               <p class="text-lg text-center text-gray-200">
                 <strong class="text-indigo-300">Bottom line:</strong> The AI
-                magnifies your engineering discipline. If you skip best
-                practices manually, the AI will skip them at <em>scale</em>.
+                magnifies your engineering discipline. Skip best practices manually,
+                and the AI will skip them at <em>scale</em>.
               </p>
             </div>
           </div>

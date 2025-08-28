@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Did an AI write this talk?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533483);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Quirky hover effects */
+        .wiggle:hover {
+            animation: wiggle 0.5s ease-in-out;
+        }
+        
+        @keyframes wiggle {
+            0%, 7% { transform: rotateZ(0); }
+            15% { transform: rotateZ(-2deg); }
+            20% { transform: rotateZ(2deg); }
+            25% { transform: rotateZ(-2deg); }
+            30% { transform: rotateZ(2deg); }
+            35% { transform: rotateZ(-1deg); }
+            40%, 100% { transform: rotateZ(0); }
+        }
+        
+        /* Bouncy buttons */
+        .bouncy {
+            transform: scale(1);
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .bouncy:hover {
+            transform: scale(1.05) rotate(1deg);
+        }
+        
+        .bouncy:active {
+            transform: scale(0.95);
+        }
+        
+        /* Wobbly cards */
+        .card-wobbly {
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .card-wobbly:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Style for the main container to hold the slides */
+        #presentation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        .chat-bubble {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Fun title effects */
+        .title-bounce {
+            animation: titleBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes titleBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <div id="presentation-container">
+        <!-- Slide 1: Title -->
+        <section id="slide-1" class="slide active text-center flex flex-col justify-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 mb-4">Did an AI write this talk?</h1>
+                
+                <!-- Hidden tagline - shows third -->
+                <div id="tagline" class="opacity-0 transform translate-y-4 transition-all duration-700 ease-out mb-8">
+                    <p class="text-xl md:text-2xl text-gray-300 italic">Use AI as a thinking partner — don't just delegate</p>
+                </div>
+                
+                <!-- Answer container that will hold both answers side by side -->
+                <div id="answers-container" class="flex justify-center items-center gap-4 min-h-[120px]">
+                    <!-- NO answer - starts centered, moves left when second appears -->
+                    <div id="answer-no" class="opacity-0 transform scale-95 translate-y-8 transition-all duration-700 ease-out">
+                        <div class="inline-block bg-red-500/10 border-2 border-red-400/50 rounded-2xl px-8 py-4 shadow-2xl backdrop-blur-sm">
+                            <p class="text-5xl font-black text-red-400 drop-shadow-lg">Nope</p>
+                        </div>
+                    </div>
+                    
+                    <!-- But it helped answer - appears to the right -->
+                    <div id="answer-but-helped" class="opacity-0 transform scale-95 translate-x-8 transition-all duration-700 ease-out">
+                        <div class="inline-block bg-green-500/10 border-2 border-green-400/50 rounded-2xl px-6 py-4 shadow-2xl backdrop-blur-sm">
+                            <p class="text-3xl font-bold text-green-400 drop-shadow-lg">But it helped!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2: The Challenge -->
+        <section id="slide-2" class="slide">
+            <div class="max-w-3xl w-full bg-gray-800/50 p-8 rounded-2xl shadow-lg border border-gray-700 card-wobbly">
+                <h2 class="text-4xl font-bold text-center mb-6 text-blue-300 wiggle">Use case 🤔</h2>
+                <div class="space-y-4 text-lg">
+                    <div class="bg-gray-700 p-4 rounded-lg bouncy">
+                        <strong class="text-blue-400">Context:</strong> I conducted a technical experiment, and I wanted to share my findings with a larger audience.
+                    </div>
+                    <div class="bg-gray-700 p-4 rounded-lg bouncy">
+                        <strong class="text-blue-400">Approach:</strong> Create a presentation, telling the story of my experiment.
+                    </div>
+                    <div class="bg-gray-700 p-4 rounded-lg bouncy">
+                        <strong class="text-blue-400">Problem:</strong> How do I structure my scattered thoughts into a clear and engaging story? 🧩
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: A Different Approach -->
+        <section id="slide-3" class="slide">
+            <div class="max-w-3xl w-full bg-gray-800/50 p-8 rounded-2xl shadow-lg border border-gray-700 card-wobbly">
+                <h2 class="text-4xl font-bold text-center mb-6 text-green-300 wiggle">A Different Approach ✨</h2>
+                <div class="space-y-4 text-lg">
+                    <div class="bg-gray-700 p-4 rounded-lg bouncy">
+                        <strong class="text-green-400">Instead of:</strong> "Create a presentation about my experiment" 😴
+                    </div>
+                    <div class="bg-gray-700 p-4 rounded-lg bouncy">
+                        <strong class="text-green-400">I said:</strong> "Act as an interviewer and help me explore this topic" 🎤
+                    </div>
+                    <div class="bg-gray-700 p-4 rounded-lg bouncy">
+                        <strong class="text-green-400">The difference:</strong> Collaboration, not delegation 🤝
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: The Collaborative Process -->
+        <section id="slide-4" class="slide">
+            <div class="max-w-3xl w-full bg-gray-800/50 p-8 rounded-2xl shadow-lg border border-gray-700 card-wobbly">
+                <h2 class="text-4xl font-bold text-center mb-8 text-yellow-300 wiggle">The Collaborative Process 💬</h2>
+                <div class="space-y-6">
+                    <p class="text-center text-gray-400 italic mb-4">Dynamic conversation, not a checklist ✅</p>
+                    <!-- AI Message -->
+                    <div class="chat-bubble flex justify-start bouncy" style="animation-delay: 0.5s;">
+                        <div class="bg-blue-500 rounded-lg p-4 max-w-md">
+                            <p class="font-bold mb-1">AI Partner 🤖</p>
+                            <p>What's the main story you want to tell?</p>
+                        </div>
+                    </div>
+                    <!-- Your Message -->
+                    <div class="chat-bubble flex justify-end bouncy" style="animation-delay: 1.5s;">
+                        <div class="bg-gray-600 rounded-lg p-4 max-w-md">
+                            <p class="font-bold mb-1">You 🙋‍♂️</p>
+                            <p>I had this experiment where I taught an AI to help me with testing...</p>
+                        </div>
+                    </div>
+                    <!-- AI Message -->
+                    <div class="chat-bubble flex justify-start bouncy" style="animation-delay: 2.5s;">
+                        <div class="bg-blue-500 rounded-lg p-4 max-w-md">
+                            <p class="font-bold mb-1">AI Partner 🤖</p>
+                            <p>What made this experiment interesting to your audience?</p>
+                        </div>
+                    </div>
+                     <!-- Your Message -->
+                    <div class="chat-bubble flex justify-end bouncy" style="animation-delay: 3.5s;">
+                        <div class="bg-gray-600 rounded-lg p-4 max-w-md">
+                            <p class="font-bold mb-1">You 💡</p>
+                            <p>Well, it showed me how to work WITH AI instead of just giving it tasks...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Why This Matters -->
+        <section id="slide-5" class="slide">
+            <div class="max-w-4xl w-full text-center">
+                <h2 class="text-5xl font-bold mb-8 text-purple-300 wiggle">Why Collaboration > Delegation 🆚</h2>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8 text-lg mb-8">
+                    <div class="bg-red-500/20 border border-red-500 p-6 rounded-xl max-w-sm card-wobbly">
+                        <p class="font-bold mb-3 text-red-300">Delegation Approach: 😐</p>
+                        <p class="text-gray-300 mb-2">✗ Non-deterministic results</p>
+                        <p class="text-gray-300 mb-2">✗ Generic, non-specific output</p>
+                        <p class="text-gray-300">✗ Miss learning opportunities</p>
+                    </div>
+                    <div class="text-4xl text-gray-500 title-bounce">⚡</div>
+                    <div class="bg-green-500/20 border border-green-500 p-6 rounded-xl max-w-sm card-wobbly">
+                        <p class="font-bold mb-3 text-green-300">Collaboration Approach: 🎉</p>
+                        <p class="text-gray-300 mb-2">✓ Results fit for purpose</p>
+                        <p class="text-gray-300 mb-2">✓ Addresses your specific needs</p>
+                        <p class="text-gray-300">✓ Learn and grow in the process</p>
+                    </div>
+                </div>
+                <p class="text-3xl text-gray-300">It's not an answer engine. 🤖</p>
+                <p class="mt-2 text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500 wiggle">It's a thinking partner. 🧠✨</p>
+            </div>
+        </section>
+
+        <!-- Slide 6: Live Demo -->
+        <section id="slide-6" class="slide">
+            <div class="max-w-4xl w-full">
+                <h2 class="text-4xl font-bold text-center mb-8 text-orange-300 wiggle">Live Demo: Team Offsite Planning 🚀</h2>
+                <div class="bg-gray-800/50 p-8 rounded-2xl shadow-lg border border-gray-700 card-wobbly">
+                    <p class="text-lg text-gray-300 mb-6 text-center">Copy these prompts to try the collaborative approach: 👇</p>
+                    
+                    <!-- Setup Prompt -->
+                    <div class="mb-6 bg-gray-700/50 p-4 rounded-lg bouncy">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1">
+                                <p class="font-bold text-blue-300 mb-2">1. Setup the collaboration: 🎯</p>
+                                <p class="text-gray-200 text-sm leading-relaxed" id="prompt-1">Act as an experienced event planner and interview me about planning a team offsite. Ask me one question at a time to help me think through this properly.</p>
+                            </div>
+                            <button onclick="copyToClipboard('prompt-1')" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-300 flex-shrink-0 bouncy">
+                                Copy 📋
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Follow-up -->
+                    <div class="mb-4 bg-gray-700/50 p-4 rounded-lg bouncy">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1">
+                                <p class="font-bold text-green-300 mb-2">2. Consider different personalities: 👥</p>
+                                <p class="text-gray-200 text-sm leading-relaxed" id="prompt-2">How can we design activities that accommodate different personality types and comfort levels?</p>
+                            </div>
+                            <button onclick="copyToClipboard('prompt-2')" class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-300 flex-shrink-0 bouncy">
+                                Copy 📋
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Prepared Responses Section -->
+                    <div class="mt-8 pt-6 border-t border-gray-600">
+                        <p class="text-lg text-gray-300 mb-4 text-center">Quick responses for likely questions: 🎯</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <button onclick="copyToClipboard('response-purpose')" class="bg-gray-600/50 hover:bg-gray-600 p-3 rounded-lg text-left transition-colors duration-300 bouncy">
+                                <p class="font-bold text-yellow-300 text-sm mb-1">Purpose: 🎯</p>
+                                <p class="text-gray-200 text-xs" id="response-purpose">Team bonding, most of the team are new joiners</p>
+                            </button>
+                            
+                            <button onclick="copyToClipboard('response-budget')" class="bg-gray-600/50 hover:bg-gray-600 p-3 rounded-lg text-left transition-colors duration-300 bouncy">
+                                <p class="font-bold text-yellow-300 text-sm mb-1">Budget: 💰</p>
+                                <p class="text-gray-200 text-xs" id="response-budget">Around €600 per person</p>
+                            </button>
+
+                            <button onclick="copyToClipboard('response-duration')" class="bg-gray-600/50 hover:bg-gray-600 p-3 rounded-lg text-left transition-colors duration-300 bouncy">
+                                <p class="font-bold text-yellow-300 text-sm mb-1">Duration: ⏰</p>
+                                <p class="text-gray-200 text-xs" id="response-duration">Around 4 days, 2 travel days and 2 full days together</p>
+                            </button>
+                            
+                            <button onclick="copyToClipboard('response-size')" class="bg-gray-600/50 hover:bg-gray-600 p-3 rounded-lg text-left transition-colors duration-300 bouncy">
+                                <p class="font-bold text-yellow-300 text-sm mb-1">Team size: 👥</p>
+                                <p class="text-gray-200 text-xs" id="response-size">Team consists of 6-8 people, mostly software engineers</p>
+                            </button>
+                            
+                            <button onclick="copyToClipboard('response-location')" class="bg-gray-600/50 hover:bg-gray-600 p-3 rounded-lg text-left transition-colors duration-300 bouncy">
+                                <p class="font-bold text-yellow-300 text-sm mb-1">Location preference: 🌍</p>
+                                <p class="text-gray-200 text-xs" id="response-location">Within 2 hours of a major airport, most of the team is based in northern Europe</p>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-6">
+                        <p class="text-gray-400 text-sm">Open <a href="https://gemini.google.com" target="_blank" class="text-blue-400 hover:text-blue-300 underline wiggle">gemini.google.com</a> in a new tab to try these prompts 🚀</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Q&A -->
+        <section id="slide-7" class="slide text-center">
+            <div class="max-w-3xl">
+                <h2 class="text-8xl font-bold text-gray-200">Q&A</h2>
+            </div>
+        </section>
+    </div>
+
+    <!-- Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 p-4 bg-gray-900/50 backdrop-blur-sm">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <button id="prevBtn" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed bouncy">← Previous</button>
+            <div class="flex-grow mx-4">
+                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                    <div id="progressBar" class="bg-gradient-to-r from-blue-500 to-purple-500 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+            </div>
+            <button id="nextBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300 bouncy">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const progressBar = document.getElementById('progressBar');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            let slide1ClickCount = 0;
+
+            function updateSlideView() {
+                slides.forEach((slide, index) => {
+                    if (index === currentSlide) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+                
+                // Update progress bar
+                const progressPercentage = (currentSlide / (totalSlides - 1)) * 100;
+                progressBar.style.width = `${progressPercentage}%`;
+
+                // Update button states
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === totalSlides - 1;
+                
+                if (currentSlide === totalSlides - 1) {
+                    nextBtn.textContent = 'Finish';
+                } else {
+                    nextBtn.textContent = 'Next';
+                }
+            }
+            
+            function showNextSlide() {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateSlideView();
+                }
+            }
+
+            function showPrevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlideView();
+                }
+            }
+
+            nextBtn.addEventListener('click', showNextSlide);
+            prevBtn.addEventListener('click', showPrevSlide);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === ' ') { // Space bar also advances
+                    showNextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevSlide();
+                }
+            });
+
+            // Click handler for slide 1 animations
+            document.getElementById('slide-1').addEventListener('click', (e) => {
+                if (currentSlide === 0) {
+                    const answerNo = document.getElementById('answer-no');
+                    const answerButHelped = document.getElementById('answer-but-helped');
+                    const tagline = document.getElementById('tagline');
+                    
+                    if (slide1ClickCount === 0) {
+                        // First click: show "NO" centered
+                        answerNo.classList.remove('opacity-0', 'scale-95', 'translate-y-8');
+                        answerNo.classList.add('opacity-100', 'scale-100', 'translate-y-0');
+                        slide1ClickCount = 1;
+                    } else if (slide1ClickCount === 1) {
+                        // Second click: show "But it helped!" and it will naturally push "NO" to the left due to flexbox
+                        answerButHelped.classList.remove('opacity-0', 'scale-95', 'translate-x-8');
+                        answerButHelped.classList.add('opacity-100', 'scale-100', 'translate-x-0');
+                        slide1ClickCount = 2;
+                    } else if (slide1ClickCount === 2) {
+                        // Third click: show tagline (which will push everything down slightly)
+                        tagline.classList.remove('opacity-0', 'translate-y-4');
+                        tagline.classList.add('opacity-100', 'translate-y-0');
+                        slide1ClickCount = 3;
+                    }
+                }
+            });
+
+            // Initial setup
+            updateSlideView();
+        });
+
+        // Copy to clipboard function
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            navigator.clipboard.writeText(text).then(function() {
+                // Visual feedback - temporarily change button text
+                const button = element.parentNode;
+                const originalText = button.innerHTML;
+                button.textContent = 'Copied!';
+                button.style.backgroundColor = '#10b981'; // green
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.backgroundColor = ''; // reset to original
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                // Visual feedback
+                const button = element.parentNode.parentNode.querySelector('button');
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+
+</body>
+</html>
